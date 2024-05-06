@@ -1,11 +1,9 @@
 // Missing edits
 // 
-// * Fix bug when operators pressed after one another returns NaN
 // * Add decimal point
 // * Add maximum display digits 
 // * Round results coming from multiplication
-// * Add keyboard support
-// * Add functionality to del operator and continue seemlesly if pressed wrong operator
+// * Add keyboard support (create a function that handles eventListener)
 
 // querySelectors
 // select display
@@ -46,7 +44,7 @@ function division (a, b) {
 }
 
 function multiplication (a, b) {
-    return a * b
+    return +((a * b).toFixed(3))
 }
 
 let firstOperand;
@@ -68,7 +66,7 @@ function operate(num1, num2, operator) {
             return multiplication (num1, num2);
     }
 }
-
+// Iterate items into display
 function populateDisplay(digit) {
     equalClick = undefined;
     if (arr.length === 0) {
@@ -78,6 +76,23 @@ function populateDisplay(digit) {
     arr.push(digit);
     return arr
 }
+// Event handler
+// function handler(operatorSign) {
+//     if (operatorClick === undefined) {
+//         firstOperand = Number(display.textContent)
+//         operatorClick = 1;
+//         display.textContent = operatorSign
+//         }
+//     else if (operatorClick === 1) {
+//          if (Number(display.textContent)) {
+//          secondOperand = Number(display.textContent);
+//          firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
+//          }
+//     display.textContent = operatorSign
+//     }
+//     arr = [];
+//     operator = operatorSign;
+// }
 // eventListeners of numbers
 one.addEventListener("click", () => {
      display.textContent = populateDisplay(1).join("")
@@ -114,12 +129,15 @@ plus.addEventListener("click", () => {
     // the ability to use multiple operands with multiple operators
     if (operatorClick === undefined) {
     firstOperand = Number(display.textContent)
-    display.textContent = `+`
     operatorClick = 1;
+    display.textContent = `+`
     }
     else if (operatorClick === 1) {
-        secondOperand = Number(display.textContent)
+       if (Number(display.textContent)) {
+        secondOperand = Number(display.textContent);
         firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
+       }
+    display.textContent = `+`
     }
     arr = [];
     operator = "+";
@@ -127,12 +145,15 @@ plus.addEventListener("click", () => {
 minus.addEventListener("click", () => {
     if (operatorClick === undefined) {
     firstOperand = Number(display.textContent)
-    display.textContent = `-`
     operatorClick = 1;
+    display.textContent = `-`
     }
     else if (operatorClick === 1) {
-        secondOperand = Number(display.textContent)
+        if (Number(display.textContent)) {
+        secondOperand = Number(display.textContent);
         firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
+        }
+    display.textContent = `-`
     }
     arr = []
     operator = "-";
@@ -140,12 +161,15 @@ minus.addEventListener("click", () => {
 divide.addEventListener("click", () => {
     if (operatorClick === undefined) {
     firstOperand = Number(display.textContent)
-    display.textContent = `÷`
     operatorClick = 1;
+    display.textContent = `÷`
     }
     else if (operatorClick === 1) {
-        secondOperand = Number(display.textContent)
+        if (Number(display.textContent)) {
+        secondOperand = Number(display.textContent);
         firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
+        }
+    display.textContent = `÷`
     }
     arr = [];
     operator = "/";
@@ -153,12 +177,15 @@ divide.addEventListener("click", () => {
 multiply.addEventListener("click", () => {
     if (operatorClick === undefined) {
     firstOperand = Number(display.textContent)
-    display.textContent = `x`
     operatorClick = 1;
+    display.textContent = `x`
     }
     else if (operatorClick === 1) {
-        secondOperand = Number(display.textContent)
+        if (Number(display.textContent)) {
+        secondOperand = Number(display.textContent);
         firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
+        }
+    display.textContent = `x`
     }
     arr = [];
     operator = "*";
@@ -166,13 +193,13 @@ multiply.addEventListener("click", () => {
 // eventListener for Equals
 equals.addEventListener("click", () => {
     if (firstOperand === undefined) {return}
-    if (equalClick === undefined) {
+    if (equalClick === undefined && Number(display.textContent)) {
     secondOperand = Number(display.textContent)
     firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
     arr = []
     operatorClick = undefined;
     equalClick = 1;
-    } else if (equalClick === 1) {return}
+    } else {return}
 })
 // eventListener for Clear
 clear.addEventListener("click", () => {
