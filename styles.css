@@ -13,20 +13,28 @@ body {
     width: 400px;
     align-items: center;
     justify-content: center;
+    border-radius: 15px;
 }
 
 #display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
     height: 100px;
     width: 350px;
     background-color: #e7d8c5;
     border: 3px solid #0C0C0C;
     border-radius: 5px;
     margin-bottom: 20px;
+    font-size: 50px;
+    font-weight: 800;
+    padding: 5px;
 }
 
+
 .numbers {
-    height: 70px;
-    width: 70px;
+    height: 75px;
+    width: 75px;
     background-color: #AF8260;
     border: 3px solid #0C0C0C;
     border-radius: 5px;
@@ -34,8 +42,8 @@ body {
 }
 
 .operators {
-    height: 70px;
-    width: 70px;
+    height: 75px;
+    width: 75px;
     background-color: #803D3B;
     border: 3px solid #0C0C0C;
     border-radius: 5px;
@@ -43,18 +51,18 @@ body {
 }
 
 .clean {
-    height: 70px;
-    width: 70px;
-    background-color: #c25c59;
+    height: 75px;
+    width: 75px;
+    background-color: #ac1830;
     border: 3px solid #0C0C0C;
     border-radius: 5px;
     text-align: center;
 }
 
 #equal {
-    height: 70px;
-    width: 70px;
-    background-color: #ac1830;
+    height: 75px;
+    width: 75px;
+    background-color: #c25c59;
     border: 3px solid #0C0C0C;
     border-radius: 5px;
     text-align: center;
@@ -93,15 +101,15 @@ body {
 
 .btn {
     margin: 5px;
-    line-height: 70px;
     font-size: 30px;
     font-weight: 800;
+    box-shadow: 0 5px #000000;
 }
 
 .btn:hover {background-color: #dbb64e}
 
 .btn:active {
   background-color: #d8ab2f;
-  box-shadow: 0 5px #666;
+  box-shadow: 0 3px #666;
   transform: translateY(4px);
 }
