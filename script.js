@@ -113,6 +113,7 @@ plus.addEventListener("click", () => {
         secondOperand = Number(display.textContent)
         firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
         arr = []
+        operator = "+";
     }
 })
 minus.addEventListener("click", () => {
@@ -127,6 +128,7 @@ minus.addEventListener("click", () => {
         secondOperand = Number(display.textContent)
         firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
         arr = []
+        operator = "-";
     }
 })
 divide.addEventListener("click", () => {
@@ -141,6 +143,7 @@ divide.addEventListener("click", () => {
         secondOperand = Number(display.textContent)
         firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
         arr = []
+        operator = "/";
     }
 })
 multiply.addEventListener("click", () => {
@@ -155,6 +158,7 @@ multiply.addEventListener("click", () => {
         secondOperand = Number(display.textContent)
         firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
         arr = []
+        operator = "*";
     }
 })
 // eventListener for Equals
