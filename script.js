@@ -168,3 +168,18 @@ equals.addEventListener("click", () => {
     arr = []
     operatorClick = undefined;
 })
+// eventListener for Clear
+clear.addEventListener("click", () => {
+    firstOperand = undefined;
+    secondOperand = undefined;
+    operator = undefined;
+    displayValue = undefined;
+    operatorClick = undefined;
+    arr = [];
+    display.textContent = ""
+})
+// evenListener for del
+del.addEventListener("click", () => {
+    arr.pop();
+    display.textContent = arr.join("")
+})
