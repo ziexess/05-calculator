@@ -33,7 +33,7 @@ function subtraction (a, b) {
 }
 
 function division (a, b) {
-    return a / b
+    return +((a / b).toFixed(3))
 }
 
 function multiplication (a, b) {
