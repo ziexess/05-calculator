@@ -101,32 +101,66 @@ zero.addEventListener("click", () => {
 })
 // eventListeners of operators
 plus.addEventListener("click", () => {
+    // the ability to use multiple operands with multiple operators
+    if (operatorClick === undefined) {
     firstOperand = Number(display.textContent)
-    display.textContent = `+`;
+    display.textContent = `+`
     operator = "+";
-    arr = []
+    arr = [];
+    operatorClick = 1;
+    }
+    else if (operatorClick === 1) {
+        secondOperand = Number(display.textContent)
+        firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
+        arr = []
+    }
 })
 minus.addEventListener("click", () => {
+    if (operatorClick === undefined) {
     firstOperand = Number(display.textContent)
     display.textContent = `-`
     operator = "-";
-    arr = []
+    arr = [];
+    operatorClick = 1;
+    }
+    else if (operatorClick === 1) {
+        secondOperand = Number(display.textContent)
+        firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
+        arr = []
+    }
 })
 divide.addEventListener("click", () => {
+    if (operatorClick === undefined) {
     firstOperand = Number(display.textContent)
     display.textContent = `÷`
     operator = "/";
-    arr = []
+    arr = [];
+    operatorClick = 1;
+    }
+    else if (operatorClick === 1) {
+        secondOperand = Number(display.textContent)
+        firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
+        arr = []
+    }
 })
 multiply.addEventListener("click", () => {
+    if (operatorClick === undefined) {
     firstOperand = Number(display.textContent)
     display.textContent = `x`
     operator = "*";
-    arr = []
+    arr = [];
+    operatorClick = 1;
+    }
+    else if (operatorClick === 1) {
+        secondOperand = Number(display.textContent)
+        firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
+        arr = []
+    }
 })
 // eventListener for Equals
 equals.addEventListener("click", () => {
     secondOperand = Number(display.textContent)
     display.textContent = operate(firstOperand, secondOperand, operator)
     arr = []
+    operatorClick = undefined;
 })
