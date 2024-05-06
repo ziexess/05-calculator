@@ -1,3 +1,12 @@
+// Missing edits
+// 
+// * Fix bug when operators pressed after one another returns NaN
+// * Add decimal point
+// * Add maximum display digits 
+// * Round results coming from multiplication
+// * Add keyboard support
+// * Add functionality to del operator and continue seemlesly if pressed wrong operator
+
 // querySelectors
 // select display
 const display = document.querySelector("#display");
@@ -43,7 +52,7 @@ function multiplication (a, b) {
 let firstOperand;
 let secondOperand;
 let operator;
-let displayValue;
+let equalClick;
 let operatorClick;
 let arr = [];
 // Operate takes 2 nums and call one of the basic operations
@@ -61,6 +70,7 @@ function operate(num1, num2, operator) {
 }
 
 function populateDisplay(digit) {
+    equalClick = undefined;
     if (arr.length === 0) {
         arr = [digit];
         return arr
@@ -155,17 +165,21 @@ multiply.addEventListener("click", () => {
 })
 // eventListener for Equals
 equals.addEventListener("click", () => {
+    if (firstOperand === undefined) {return}
+    if (equalClick === undefined) {
     secondOperand = Number(display.textContent)
     firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
     arr = []
     operatorClick = undefined;
+    equalClick = 1;
+    } else if (equalClick === 1) {return}
 })
 // eventListener for Clear
 clear.addEventListener("click", () => {
     firstOperand = undefined;
     secondOperand = undefined;
     operator = undefined;
-    displayValue = undefined;
+    equalClick = undefined;
     operatorClick = undefined;
     arr = [];
     display.textContent = ""
