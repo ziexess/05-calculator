@@ -105,66 +105,58 @@ plus.addEventListener("click", () => {
     if (operatorClick === undefined) {
     firstOperand = Number(display.textContent)
     display.textContent = `+`
-    operator = "+";
-    arr = [];
     operatorClick = 1;
     }
     else if (operatorClick === 1) {
         secondOperand = Number(display.textContent)
         firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
-        arr = []
-        operator = "+";
     }
+    arr = [];
+    operator = "+";
 })
 minus.addEventListener("click", () => {
     if (operatorClick === undefined) {
     firstOperand = Number(display.textContent)
     display.textContent = `-`
-    operator = "-";
-    arr = [];
     operatorClick = 1;
     }
     else if (operatorClick === 1) {
         secondOperand = Number(display.textContent)
         firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
-        arr = []
-        operator = "-";
     }
+    arr = []
+    operator = "-";
 })
 divide.addEventListener("click", () => {
     if (operatorClick === undefined) {
     firstOperand = Number(display.textContent)
     display.textContent = `÷`
-    operator = "/";
-    arr = [];
     operatorClick = 1;
     }
     else if (operatorClick === 1) {
         secondOperand = Number(display.textContent)
         firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
-        arr = []
-        operator = "/";
     }
+    arr = [];
+    operator = "/";
 })
 multiply.addEventListener("click", () => {
     if (operatorClick === undefined) {
     firstOperand = Number(display.textContent)
     display.textContent = `x`
-    operator = "*";
-    arr = [];
     operatorClick = 1;
     }
     else if (operatorClick === 1) {
         secondOperand = Number(display.textContent)
         firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
-        arr = []
-        operator = "*";
     }
+    arr = [];
+    operator = "*";
 })
 // eventListener for Equals
 equals.addEventListener("click", () => {
     secondOperand = Number(display.textContent)
-    display.textContent = operate(firstOperand, secondOperand, operator)
+    firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
     arr = []
     operatorClick = undefined;
 })
