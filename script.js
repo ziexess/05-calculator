@@ -1,6 +1,5 @@
 // Missing edits
 // 
-// * Add decimal point
 // * Add keyboard support (create a function that handles eventListener)
 // * Create For loop for adding eventListeners to numbers
 
@@ -28,6 +27,8 @@ const equals = document.querySelector("#equal");
 // select clear
 const clear = document.querySelector("#clear");
 const del = document.querySelector("#del");
+// select decimal point
+const decimal = document.querySelector("#decimal")
 
 // basic opreation fucntions
 function addition (a, b) {
@@ -39,7 +40,8 @@ function subtraction (a, b) {
 }
 
 function division (a, b) {
-    return a / b
+    if (b === 0) {return Infinity}
+    else {return a / b}
 }
 
 function multiplication (a, b) {
@@ -52,6 +54,7 @@ let operator;
 let equalClick;
 let operatorClick;
 let arr = [];
+let decimalClick = false;
 // Operate takes 2 nums and call one of the basic operations
 function operate(num1, num2, operator) {
     switch(operator){
@@ -76,6 +79,7 @@ function operate(num1, num2, operator) {
             }
             return multiplication (num1, num2);
     }
+    
 }
 // Iterate items into display
 function populateDisplay(digit) {
@@ -88,6 +92,7 @@ function populateDisplay(digit) {
 // Click Event handler
 function clickHandler(operatorSign) {
     display.style.fontSize = "50px";
+    decimalClick = false;
     // the ability to use multiple operands with multiple operators
     if (operatorClick === undefined) {
         firstOperand = Number(display.textContent)
@@ -142,6 +147,7 @@ divide.addEventListener("click", () => {clickHandler("/")})
 multiply.addEventListener("click", () => {clickHandler("*")})
 // eventListener for Equals
 equals.addEventListener("click", () => {
+    decimalClick = false;
     if (firstOperand === undefined) {return}
     if (equalClick === undefined && Number(display.textContent)) {
     secondOperand = Number(display.textContent)
@@ -154,6 +160,7 @@ equals.addEventListener("click", () => {
 // eventListener for Clear
 clear.addEventListener("click", () => {
     firstOperand = undefined;
+    decimalClick = false;
     secondOperand = undefined;
     operator = undefined;
     equalClick = undefined;
@@ -163,7 +170,15 @@ clear.addEventListener("click", () => {
 })
 // evenListener for del
 del.addEventListener("click", () => {
+    if ((arr[arr.length - 1]) === ".") {decimalClick = false;}
     arr.pop();
     display.textContent = arr.join("")
+})
+// eventListener for decimal
+decimal.addEventListener("click", () => {
+    if(decimalClick === false) {
+    display.textContent = populateDisplay(".").join("")
+    decimalClick = true;
+    }
 })
 // Keyboard Support
