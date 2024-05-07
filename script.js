@@ -2,7 +2,7 @@
 // 
 // * Add decimal point
 // * Add keyboard support (create a function that handles eventListener)
-// create For loop for adding eventListeners to numbers
+// * Create For loop for adding eventListeners to numbers
 
 // querySelectors
 // select display
@@ -39,11 +39,11 @@ function subtraction (a, b) {
 }
 
 function division (a, b) {
-    return +((a / b).toFixed(3))
+    return a / b
 }
 
 function multiplication (a, b) {
-    return +((a * b).toFixed(3))
+    return a * b
 }
 
 let firstOperand;
