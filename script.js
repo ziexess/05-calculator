@@ -2,6 +2,7 @@
 // 
 // * Add decimal point
 // * Add keyboard support (create a function that handles eventListener)
+// create For loop for adding eventListeners to numbers
 
 // querySelectors
 // select display
@@ -84,8 +85,8 @@ function populateDisplay(digit) {
     arr.push(digit);
     return arr}
 }
-// Event handler
-function handler(operatorSign) {
+// Click Event handler
+function clickHandler(operatorSign) {
     display.style.fontSize = "50px";
     // the ability to use multiple operands with multiple operators
     if (operatorClick === undefined) {
@@ -135,10 +136,10 @@ zero.addEventListener("click", () => {
     display.textContent = populateDisplay(0).join("")
 })
 // eventListeners of operators
-plus.addEventListener("click", () => {handler("+")})
-minus.addEventListener("click", () => {handler("-")})
-divide.addEventListener("click", () => {handler("/")})
-multiply.addEventListener("click", () => {handler("*")})
+plus.addEventListener("click", () => {clickHandler("+")})
+minus.addEventListener("click", () => {clickHandler("-")})
+divide.addEventListener("click", () => {clickHandler("/")})
+multiply.addEventListener("click", () => {clickHandler("*")})
 // eventListener for Equals
 equals.addEventListener("click", () => {
     if (firstOperand === undefined) {return}
@@ -165,3 +166,4 @@ del.addEventListener("click", () => {
     arr.pop();
     display.textContent = arr.join("")
 })
+// Keyboard Support

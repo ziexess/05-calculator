@@ -113,3 +113,9 @@ body {
   box-shadow: 0 3px #666;
   transform: translateY(4px);
 }
+
+.active {
+    background-color: #d8ab2f;
+    box-shadow: 0 3px #666;
+    transform: translateY(4px);
+}
