@@ -40,8 +40,7 @@ function subtraction (a, b) {
 }
 
 function division (a, b) {
-    if (b === 0) {return Infinity}
-    else {return a / b}
+    return a / b
 }
 
 function multiplication (a, b) {
@@ -149,7 +148,7 @@ multiply.addEventListener("click", () => {clickHandler("*")})
 equals.addEventListener("click", () => {
     decimalClick = false;
     if (firstOperand === undefined) {return}
-    if (equalClick === undefined && Number(display.textContent)) {
+    if (equalClick === undefined && (Number(display.textContent)) !== NaN) {
     secondOperand = Number(display.textContent)
     firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
     arr = []
