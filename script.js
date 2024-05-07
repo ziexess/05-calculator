@@ -1,8 +1,6 @@
 // Missing edits
 // 
 // * Add decimal point
-// * Add maximum display digits 
-// * Round results coming from multiplication
 // * Add keyboard support (create a function that handles eventListener)
 
 // querySelectors
@@ -57,42 +55,54 @@ let arr = [];
 function operate(num1, num2, operator) {
     switch(operator){
         case "+":
+            if (((addition(num1, num2)).toString().length) > 12) {
+                display.style.fontSize = "30px"; 
+            }
             return addition(num1, num2);
         case "-":
+            if (((subtraction(num1, num2)).toString().length) > 12) {
+                display.style.fontSize = "30px"; 
+            }
             return subtraction(num1, num2);
         case "/":
+            if (((division(num1, num2)).toString().length) > 12) {
+                display.style.fontSize = "30px"; 
+            }
             return division (num1, num2);
         case "*":
+            if (((multiplication(num1, num2)).toString().length) > 12) {
+                display.style.fontSize = "30px"; 
+            }
             return multiplication (num1, num2);
     }
 }
 // Iterate items into display
 function populateDisplay(digit) {
+    if (arr.length < 13) {
+    display.style.fontSize = "50px";
     equalClick = undefined;
-    if (arr.length === 0) {
-        arr = [digit];
-        return arr
-    }
     arr.push(digit);
-    return arr
+    return arr}
 }
 // Event handler
-// function handler(operatorSign) {
-//     if (operatorClick === undefined) {
-//         firstOperand = Number(display.textContent)
-//         operatorClick = 1;
-//         display.textContent = operatorSign
-//         }
-//     else if (operatorClick === 1) {
-//          if (Number(display.textContent)) {
-//          secondOperand = Number(display.textContent);
-//          firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
-//          }
-//     display.textContent = operatorSign
-//     }
-//     arr = [];
-//     operator = operatorSign;
-// }
+function handler(operatorSign) {
+    display.style.fontSize = "50px";
+    // the ability to use multiple operands with multiple operators
+    if (operatorClick === undefined) {
+        firstOperand = Number(display.textContent)
+        operatorClick = 1;
+        display.textContent = operatorSign
+        }
+    else if (operatorClick === 1) {
+         if (Number(display.textContent)) {
+         secondOperand = Number(display.textContent);
+         firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
+         }
+    display.textContent = operatorSign
+    }
+    arr = [];
+    operator = operatorSign;
+}
 // eventListeners of numbers
 one.addEventListener("click", () => {
      display.textContent = populateDisplay(1).join("")
@@ -125,71 +135,10 @@ zero.addEventListener("click", () => {
     display.textContent = populateDisplay(0).join("")
 })
 // eventListeners of operators
-plus.addEventListener("click", () => {
-    // the ability to use multiple operands with multiple operators
-    if (operatorClick === undefined) {
-    firstOperand = Number(display.textContent)
-    operatorClick = 1;
-    display.textContent = `+`
-    }
-    else if (operatorClick === 1) {
-       if (Number(display.textContent)) {
-        secondOperand = Number(display.textContent);
-        firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
-       }
-    display.textContent = `+`
-    }
-    arr = [];
-    operator = "+";
-})
-minus.addEventListener("click", () => {
-    if (operatorClick === undefined) {
-    firstOperand = Number(display.textContent)
-    operatorClick = 1;
-    display.textContent = `-`
-    }
-    else if (operatorClick === 1) {
-        if (Number(display.textContent)) {
-        secondOperand = Number(display.textContent);
-        firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
-        }
-    display.textContent = `-`
-    }
-    arr = []
-    operator = "-";
-})
-divide.addEventListener("click", () => {
-    if (operatorClick === undefined) {
-    firstOperand = Number(display.textContent)
-    operatorClick = 1;
-    display.textContent = `÷`
-    }
-    else if (operatorClick === 1) {
-        if (Number(display.textContent)) {
-        secondOperand = Number(display.textContent);
-        firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
-        }
-    display.textContent = `÷`
-    }
-    arr = [];
-    operator = "/";
-})
-multiply.addEventListener("click", () => {
-    if (operatorClick === undefined) {
-    firstOperand = Number(display.textContent)
-    operatorClick = 1;
-    display.textContent = `x`
-    }
-    else if (operatorClick === 1) {
-        if (Number(display.textContent)) {
-        secondOperand = Number(display.textContent);
-        firstOperand = display.textContent = operate(firstOperand, secondOperand, operator)
-        }
-    display.textContent = `x`
-    }
-    arr = [];
-    operator = "*";
-})
+plus.addEventListener("click", () => {handler("+")})
+minus.addEventListener("click", () => {handler("-")})
+divide.addEventListener("click", () => {handler("/")})
+multiply.addEventListener("click", () => {handler("*")})
 // eventListener for Equals
 equals.addEventListener("click", () => {
     if (firstOperand === undefined) {return}
